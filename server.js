@@ -15,7 +15,14 @@ app.get('/api/getData', (req, res) => {
 });
 
 app.post('/api/sendData', (req, res) => {
-    res.status(201).send('Les données ont bien étés enregistrés !')
+    if (req.body)
+    {
+        res.status(201).send('Les données ont bien étés enregistrés !')
+    }
+    else
+    {
+        res.status(500).send('erreur ! pas de données reçues')
+    }
 });
 
 app.listen(port, console.log('listen on' + port));
