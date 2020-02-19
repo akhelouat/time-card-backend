@@ -16,7 +16,7 @@ var usersMock = {
         },
     "4":{
         "name": 'david',
-        "password": '1234',
+        "password": 'algorithme',
         "promo": "1"
         },
     "5":{

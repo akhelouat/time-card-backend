@@ -5,6 +5,11 @@ var usersMocks = require('./mocks');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+  });
+
 
 app.get('/', (req, res) => {
     res.send('le serveur fonctionne bien')
