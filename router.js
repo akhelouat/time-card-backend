@@ -1,7 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-const router = express.router();
+const router = express();
 var usersMocks = require('./mocks');
+
+
+
+router.get('/', (req, res) => {
+    res.send('le serveur fonctionne bien')
+    });
+
+
+    module.exports = router;
+
+/*
 
 router.use(bodyParser.json());
 
@@ -11,10 +22,6 @@ router.use(function(req, res, next) {
     next();
   });
 
-
-router.get('/', (req, res) => {
-    res.send('le serveur fonctionne bien')
-    });
 
 router.get('/api/getData', (req, res) => {
     res.status(200).json(usersMocks)
@@ -30,3 +37,5 @@ router.post('/api/sendData', (req, res) => {
         res.status(500).send('erreur ! pas de données reçues')
     }
 });
+
+*/
