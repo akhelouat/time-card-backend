@@ -17,4 +17,4 @@ codex: req.body.codex
         .then(TmDate => res.status(200).json(TmDate))
         .catch(TmDate => res.status(400).json({ TmDate }));
     
-    };
+};

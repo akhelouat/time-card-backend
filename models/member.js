@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const memberSchema = new mongoose.Schema({
-    userName: {
+    username: {
+        type: String,
+        required: true
+    },
+    password: {
         type: String,
         required: true
     },
@@ -8,10 +12,7 @@ const memberSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    password: {
-        type: String,
-        required: true
-    },
+  
     promo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'promo'

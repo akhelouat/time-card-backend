@@ -1,27 +1,23 @@
-const member = require('../model/member');
-const promo = require('../model/promo');
-const info = require('../model/info');
+const TmMember = require('../models/date')
 
-module.exports = {
-    create: async(req, res) => {
-        const { name, bio, website } = req.body;
-        const member = await member.create({
-            name,
-            bio,
-            website
-        })
+exports.addMember = (req, res, next) => {
+const member = new TmMember({
+username: req.body.username,
+password: req.body.password,
+isAdmin: req.body.isAdmin,
+promo:req.body.promo,
+info:req.body.info
+});
+          const myvar = req.body.date_day
+          member.save()
+        .then(() => res.status(201).json({ myvar}))
+        .catch(error => res.status(400).json({ error }));
+    
+    };
 
-        return res.send(member)
-    },
-
-    find: async(req, res) => {
-        const member = await member.find()
-        return res.send(member)
-    },
-    postsBymember: async(req, res) => {
-        const { id } = req.params;
-        const member = await member.findById(id).populate('posts');
-
-        res.send(member.posts);
-    }
-}
+exports.getMembers = (req, res, next) => {
+    TmMember.find()
+        .then(TmMember => res.status(200).json(TmMember))
+        .catch(TmMember => res.status(400).json({ TmMember }));
+    
+};
