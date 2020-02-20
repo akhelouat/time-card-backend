@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const promo = new mongoose.Schema({
+const promoSchema = new mongoose.Schema({
     name: {
         type: String
     },
@@ -17,4 +17,4 @@ const promo = new mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('promo', promo);
+module.exports = mongoose.model('promo', promoSchema);
