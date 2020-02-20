@@ -2,9 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const router = express();
 var usersMocks = require('./mocks');
+const date = require('./controllers/date.js')
 
 
 router.use(bodyParser.json());
+
+router.post('/date/create',date.create);
+router.post('/date/find',date.find);
+
 
 
 router.use(function(req, res, next) {
@@ -13,7 +18,7 @@ router.use(function(req, res, next) {
   });
 
 
-router.get('/', (req, res) => {
+router.get('/', dateControl => {
     res.send('le serveur fonctionne bien')
     });
 
