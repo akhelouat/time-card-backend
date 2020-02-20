@@ -1,4 +1,4 @@
-const date = require('../models/date');
+const TmDate = require('../models/date')
 
 exports.addDate = (req, res, next) => {
 const date = new TmDate({
