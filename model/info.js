@@ -27,9 +27,10 @@ const info = new mongoose.Schema({
     idPole: {
         type: String
     },
-    member_id: [
-        { type: mongoose.Schema.Types.ObjectId, ref: 'member' }
-    ]
+    member: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'member'
+    }
 }, {
     timestamps: true
 })

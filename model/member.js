@@ -9,9 +9,14 @@ const member = new mongoose.Schema({
     password: {
         type: String
     },
-    promo_id: [
-        { type: mongoose.Schema.Types.ObjectId, ref: 'promo' }
-    ]
+    promo: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'promo'
+    },
+    info: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'info'
+    }
 }, {
     timestamps: true
 })
