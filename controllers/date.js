@@ -9,6 +9,7 @@ codex: req.body.codex
         date.save()
         .then(() => res.status(201).json({ myvar}))
         .catch(error => res.status(400).json({ error }));
+        next();
     
     };
 
@@ -16,5 +17,6 @@ codex: req.body.codex
         TmDate.find()
         .then(TmDate => res.status(200).json(TmDate))
         .catch(TmDate => res.status(400).json({ TmDate }));
+        next();
     
 };
