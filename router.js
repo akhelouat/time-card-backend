@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-const router = express.Router();
+const router = express()
 var usersMocks = require('./mocks');
 const date = require('./controllers/date.js')
 const mongoose = require('mongoose');

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dateSchema = new mongoose.Schema({
     date_day: {
-        type: String,
+        type: Date,
         required: true
     },
     codex: {
