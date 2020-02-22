@@ -1,26 +1,26 @@
-const info = require('../model/info');
-const member = require('../model/member');
+const Myinfo = require('../models/info')
 
-module.exports = {
-    create: async(req, res) => {
-        const { name, bio, website } = req.body;
-        const info = await info.create({
-            name,
-            bio,
-            website
-        })
+exports.addInfo = (req, res, next) => {
+  const theinfo = new Myinfo({
+    nom: req.body.nom,
+    prenom: req.body.prenom,
+    email: req.body.email,
+    addr: req.body.addr,
+    cp: req.body.cp,
+    phone: req.body.phone,
+    sign: req.body.sign,
+    picture: req.body.picture,
+    idPole: req.body.idPole
+  });
+  const myvar = req.body.nom
+  theinfo.save()
+.then(() => res.status(201).json({ myvar}))
+.catch(error => res.status(400).json({ error }));
+};
 
-        return res.send(info)
-    },
-
-    find: async(req, res) => {
-        const info = await info.find()
-        return res.send(info)
-    },
-    postsByinfo: async(req, res) => {
-        const { id } = req.params;
-        const info = await info.findById(id).populate('posts');
-
-        res.send(info.posts);
-    }
-}
+    exports.getInfo = (req, res, next) => {
+        Myinfo.find()
+      .then(Myinfo => res.status(200).json(Myinfo))
+      .catch(Myinfo => res.status(400).json({ Myinfo }));
+    
+};

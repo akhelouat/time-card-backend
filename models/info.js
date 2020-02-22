@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const infoSchema = new mongoose.Schema({
-    name: {
+    nom: {
         type: String
     },
     prenom: {
@@ -26,11 +26,11 @@ const infoSchema = new mongoose.Schema({
     },
     idPole: {
         type: String
-    },
+    },/*
     member: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'member'
-    }
+    }*/
 }, {
     timestamps: true
 })
