@@ -19,6 +19,8 @@ router.use(function(req, res, next) {
 
 router.post('/add/promo', promoController.addPromo);
 router.get('/get/promo', promoController.getPromo)
+router.put('/update/promo', promoController.updatePromo);
+router.delete('/delete/promo', promoController.deletePromo)
  
 router.post('/add/info', infoController.addInfo);
 router.get('/get/info', infoController.getInfo)

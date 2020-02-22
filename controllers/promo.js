@@ -23,7 +23,7 @@ exports.updatePromo = (req, res, next) => {
   if (req.body._id) {
      if(req.body.name) {
       Mypromo.updateMany({_id : req.body._id }, { $set: { name: req.body.name } })
-      .then(Myinfo => res.status(200).send('le nom de la promo a bien été changé en ' + req.body.username + ' || '))
+      .then(Myinfo => res.status(200).send('le nom de la promo a bien été changé en ' + req.body.name + ' || '))
       .catch(Myinfo => res.status(400).send('problème : aucune modifications de faite'));
      }
      if(req.body.start) {
