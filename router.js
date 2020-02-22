@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 router.use(bodyParser.json());
 const dateController = require ('./controllers/date')
 const memberController = require ('./controllers/member')
+const promoController = require ('./controllers/promo')
 mongoose.connect('mongodb://localhost:27017/timecard', 
 { useNewUrlParser: true,
   useUnifiedTopology: true })
@@ -16,7 +17,13 @@ router.use(function(req, res, next) {
     next();
   });
 
+  router.post('/add/promo', promoController.addPromo);
 
+
+
+  router.get('/get/promo', promoController.getPromo)
+
+  
 router.post('/add/member', memberController.addMember);
 
 
