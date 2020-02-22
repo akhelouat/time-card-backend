@@ -5,6 +5,7 @@ var usersMocks = require('./mocks');
 const date = require('./controllers/date.js')
 const mongoose = require('mongoose');
 router.use(bodyParser.json());
+const Mydate = require('./models/date')
 const dateController = require ('./controllers/date')
 const memberController = require ('./controllers/member')
 mongoose.connect('mongodb://localhost:27017/timecard', 
@@ -13,13 +14,12 @@ mongoose.connect('mongodb://localhost:27017/timecard',
 .then(() => console.log('Connexion à MongoDB réussie !'))
 .catch(() => console.log('Connexion à MongoDB échouée !'));
 
-router.get('/getDate', dateController.getDate,);
+//router.get('/getDate', dateController.getDate,);
 router.post('/addDate', dateController.addDate);
 
-router.get('/api/getData', (req, res, next) => {
-        res.status(200).json(usersMocks)
-        next();
-    });
+
+
+router.get('/getData', dateController.getDate)
 
 router.post('/addMember', memberController.addMember);
 //router.get('/getMember', memberController.getMember);

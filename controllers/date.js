@@ -13,11 +13,11 @@ codex: req.body.codex
 
     exports.getDate = (req, res, next) => {
       Mydate.find()
-        .then(Mydate => res.status(200).json(Mydate))
-        .catch(Mydate => res.status(400).json({ Mydate }));
-        next();
+      .then(Mydate => res.status(200).json(Mydate))
+      .catch(Mydate => res.status(400).json({ Mydate }));
     
 };
+
 
 
 
