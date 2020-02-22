@@ -48,7 +48,42 @@ exports.updateInfo = (req, res, next) => {
         .then(Myinfo => res.status(200).send('l\'adresse a bien été changé en ' + req.body.addr + ' || '))
         .catch(Myinfo => res.status(400).send('problème : aucune modifications de faite'));
     }
-   
+    if(req.body.cp) {
+        Myinfo.updateMany({_id : req.body._id }, { $set: { cp: req.body.cp } })
+        .then(Myinfo => res.status(200).send('l\'adresse postale a bien été changée en ' + req.body.cp + ' || '))
+        .catch(Myinfo => res.status(400).send('problème : aucune modifications de faite'));
+    }
+    if(req.body.phone) {
+        Myinfo.updateMany({_id : req.body._id }, { $set: { phone: req.body.phone } })
+        .then(Myinfo => res.status(200).send('le numéro de téléphone a bien été changé en ' + req.body.phone + ' || '))
+        .catch(Myinfo => res.status(400).send('problème : aucune modifications de faite'));
+    }
+    if(req.body.sign) {
+        Myinfo.updateMany({_id : req.body._id }, { $set: { sign: req.body.sign } })
+        .then(Myinfo => res.status(200).send('la signature a bien été changée en ' + req.body.email + ' || '))
+        .catch(Myinfo => res.status(400).send('problème : aucune modifications de faite'));
+    }
+    if(req.body.picture) {
+        Myinfo.updateMany({_id : req.body._id }, { $set: { picture: req.body.picture } })
+        .then(Myinfo => res.status(200).send('la photo a bien été changée en ' + req.body.addr + ' || '))
+        .catch(Myinfo => res.status(400).send('problème : aucune modifications de faite'));
+    }
+    if(req.body.idPole) {
+        Myinfo.updateMany({_id : req.body._id }, { $set: { idPole: req.body.idPole } })
+        .then(Myinfo => res.status(200).send('le numéro pole emploi a bien été changé en ' + req.body.addr + ' || '))
+        .catch(Myinfo => res.status(400).send('problème : aucune modifications de faite'));
+    }
+};
 
-
+exports.deleteInfo = (req, res, next) => {
+    if(req,body,_id)
+    {
+         Myinfo.deleteOne({_id : req.body._id })
+         .then(() => res.status(200).send('la suppression a bien été effectuée'))
+         .catch(() => res.status(400).send('l\'id fournit ne match avec aucun étudiant, veuillez renvoyer une autre requete'))
+    }
+    else
+    {
+        res.status(400).send('problème : il faut préciser l\'id de l\'étudiant ')
+    }
 };
