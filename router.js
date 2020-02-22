@@ -28,6 +28,8 @@ router.delete('/delete/info', infoController.deleteInfo)
   
 router.post('/add/member', memberController.addMember);
 router.get('/get/member', memberController.getMember)
+router.put('/update/member', memberController.updateMember)
+router.delete('/delete/member', memberController.deleteMember)
   
 router.post('/add/date', dateController.addDate);
 router.get('/get/date', dateController.getDate)

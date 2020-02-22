@@ -44,8 +44,9 @@ exports.updateMember = (req, res, next) => {
         res.status(400).send('problème : il faut préciser l\'id de l\'étudiant ')
 
        }
+    };
 
-       exports.deleteInfo = (req, res, next) => {
+       exports.deleteMember = (req, res, next) => {
         if(req.body._id)
         {
              Member.deleteOne({_id : req.body._id })
