@@ -13,7 +13,7 @@ const infoSchema = new mongoose.Schema({
         type: String
     },
     cp: {
-        type: BigInt
+        type: Number
     },
     phone: {
         type: String
