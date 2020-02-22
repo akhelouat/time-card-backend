@@ -33,5 +33,7 @@ router.delete('/delete/member', memberController.deleteMember)
   
 router.post('/add/date', dateController.addDate);
 router.get('/get/date', dateController.getDate)
+router.put('/update/date', dateController.updateDate)
+
 
 module.exports = router;
