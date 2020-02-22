@@ -76,7 +76,7 @@ exports.updateInfo = (req, res, next) => {
 };
 
 exports.deleteInfo = (req, res, next) => {
-    if(req,body,_id)
+    if(req.body._id)
     {
          Myinfo.deleteOne({_id : req.body._id })
          .then(() => res.status(200).send('la suppression a bien été effectuée'))

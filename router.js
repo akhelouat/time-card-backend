@@ -23,6 +23,7 @@ router.get('/get/promo', promoController.getPromo)
 router.post('/add/info', infoController.addInfo);
 router.get('/get/info', infoController.getInfo)
 router.put('/update/info', infoController.updateInfo)
+router.delete('/delete/info', infoController.deleteInfo)
 
   
 router.post('/add/member', memberController.addMember);
