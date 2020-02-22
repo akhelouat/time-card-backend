@@ -9,10 +9,11 @@ const promoSchema = new mongoose.Schema({
     end: {
         type: Date
     },
+/*
     member: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'member'
-    }]
+    }] */
 }, {
     timestamps: true
 })

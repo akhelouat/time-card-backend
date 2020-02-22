@@ -1,25 +1,20 @@
-const promo = require('../model/promo');
+const Mypromo = require('../models/promo')
 
-module.exports = {
-    create: async(req, res) => {
-        const { name, bio, website } = req.body;
-        const promo = await promo.create({
-            name,
-            bio,
-            website
-        })
+exports.addPromo = (req, res, next) => {
+  const thepromo = new Mypromo({
+    name: req.body.name,
+start: req.body.start,
+end: req.body.end
+  });
+  const myvar = req.body.name
+  thepromo.save()
+.then(() => res.status(201).json({ myvar}))
+.catch(error => res.status(400).json({ error }));
+};
 
-        return res.send(promo)
-    },
-
-    find: async(req, res) => {
-        const promo = await promo.find()
-        return res.send(promo)
-    },
-    postsBypromo: async(req, res) => {
-        const { id } = req.params;
-        const promo = await promo.findById(id).populate('posts');
-
-        res.send(promo.posts);
-    }
-}
+    exports.getPromo = (req, res, next) => {
+        Mypromo.find()
+      .then(Mypromo => res.status(200).json(Mypromo))
+      .catch(Mypromo => res.status(400).json({ Mypromo }));
+    
+};
