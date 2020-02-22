@@ -12,7 +12,7 @@ const memberSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-  
+/*
     promo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'promo'
@@ -20,7 +20,7 @@ const memberSchema = new mongoose.Schema({
     info: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'info'
-    }
+    }*/
 }, {
     timestamps: true
 })
