@@ -7,7 +7,7 @@ const dateController = require ('./controllers/date')
 const memberController = require ('./controllers/member')
 const promoController = require ('./controllers/promo')
 const infoController = require ('./controllers/info')
-mongoose.connect('mongodb://localhost:27017/timecard', 
+mongoose.connect('mongodb+srv://abdel:3wRrhcbY96MCdRD@cluster0-axmws.gcp.mongodb.net/test?retryWrites=true&w=majority', 
 { useNewUrlParser: true,
   useUnifiedTopology: true })
 .then(() => console.log('Connexion à MongoDB réussie !'))
