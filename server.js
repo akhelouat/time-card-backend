@@ -4,4 +4,3 @@ const router = require('./router')
 const server = http.createServer(router)
 server.listen(port)
 console.log('le server écoute sur le port ' + port)
-

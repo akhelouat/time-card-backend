@@ -26,11 +26,12 @@ const infoSchema = new mongoose.Schema({
     },
     idPole: {
         type: String
-    },/*
-    member: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'member'
-    }*/
+    },
+    /*
+        member: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'member'
+        }*/
 }, {
     timestamps: true
 })
