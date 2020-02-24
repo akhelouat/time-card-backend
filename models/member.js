@@ -12,15 +12,15 @@ const memberSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-/*
-    promo: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'promo'
-    },
-    info: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'info'
-    }*/
+    /*
+        promo: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'promo'
+        },
+        info: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'info'
+        }*/
 }, {
     timestamps: true
 })
