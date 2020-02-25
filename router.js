@@ -3,10 +3,8 @@ const bodyParser = require('body-parser')
 const router = express()
 const mongoose = require('mongoose')
 router.use(bodyParser.json())
-const dateController = require('./controllers/date')
 const memberController = require('./controllers/member')
 const promoController = require('./controllers/promo')
-const infoController = require('./controllers/info')
 
 // Mongoose connection
 mongoose.connect('mongodb+srv://abdel:3wRrhcbY96MCdRD@cluster0-axmws.gcp.mongodb.net/test?retryWrites=true&w=majority', {
@@ -21,26 +19,15 @@ router.use(function (req, res, next) {
 })
 
 // Promo
-router.post('/add/promo', promoController.addPromo)
-router.get('/get/promo', promoController.getPromo)
-router.put('/update/promo', promoController.updatePromo)
-router.delete('/delete/promo', promoController.deletePromo)
-
-// Info
-router.post('/add/info', infoController.addInfo)
-router.get('/get/info', infoController.getInfo)
-router.put('/update/info', infoController.updateInfo)
-router.delete('/delete/info', infoController.deleteInfo)
+router.post('/api/addPromo', promoController.addPromo)
+router.get('/api/getPromo', promoController.getPromo)
+router.put('/api/updatePromo', promoController.updatePromo)
+router.delete('/api/deletePromo', promoController.deletePromo)
 
 // Member
-router.post('/add/member', memberController.addMember)
-router.get('/get/member', memberController.getMember)
-router.put('/update/member', memberController.updateMember)
-router.delete('/delete/member', memberController.deleteMember)
-
-// Date
-router.post('/add/date', dateController.addDate)
-router.get('/get/date', dateController.getDate)
-router.put('/update/date', dateController.updateDate)
+router.post('/api/addMember', memberController.addMember)
+router.get('/api/getMember', memberController.getMember)
+router.put('/api/updateMember', memberController.updateMember)
+router.delete('/api/deleteMember', memberController.deleteMember)
 
 module.exports = router

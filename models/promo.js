@@ -1,19 +1,17 @@
 const mongoose = require('mongoose');
 const promoSchema = new mongoose.Schema({
     name: {
-        type: String
+        type: String,
+        required: true
     },
     start: {
-        type: Date
+        type: Date,
+        required: true
     },
     end: {
-        type: Date
+        type: Date,
+        required: true
     },
-    /*
-        member: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'member'
-        }] */
 }, {
     timestamps: true
 })
