@@ -15,7 +15,7 @@ function updater(id, param, body, res, msg, error) {
 
 exports.addMember = (req, res, next) => {
     const member = new Member({
-        username: usernameCreate(req.body.nom, req.body.prenom),
+        username: req.body.prenom[0] + req.body.nom,
         password: req.body.password,
         isAdmin: req.body.isAdmin,
         promo: req.body.promo,
@@ -115,7 +115,4 @@ exports.deleteMember = (req, res, next) => {
     } else {
         res.status(400).send('problème : il faut préciser l\'id de l\'étudiant ')
     }
-
-
-
 };
