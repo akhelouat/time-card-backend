@@ -1,6 +1,5 @@
 const Member = require('../models/member')
 
-
 function updater(id, param, body, res, msg, error) {
     Myinfo.updateMany({
         _id: id
@@ -15,23 +14,21 @@ function updater(id, param, body, res, msg, error) {
 
 exports.addMember = (req, res, next) => {
     const member = new Member({
-        username: req.body.prenom[0] + req.body.nom,
-        password: req.body.password,
-        isAdmin: req.body.isAdmin,
-        promo: req.body.promo,
-        info: req.body.info,
         nom: req.body.nom,
         prenom: req.body.prenom,
+        username: req.body.prenom[0] + req.body.nom,
+        isAdmin: req.body.isAdmin,
+        promo: req.body.promo,
         email: req.body.email,
         addr: req.body.addr,
         cp: req.body.cp,
         phone: req.body.phone,
         sign: req.body.sign,
         picture: req.body.picture,
-        idPole: req.body.idPole
+        idPole: req.body.idPole 
     });
     member.save()
-        .then(() => res.status(201).send("l'étudiant " + username + " a bien été créer"))
+        .then(() => res.status(201).send(req.body.prenom + " " + req.body.nom + " a été rajouté à la base de données"))
         .catch(error => res.status(400).send({ error }));
 
 };

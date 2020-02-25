@@ -1,5 +1,11 @@
 const mongoose = require('mongoose');
 const memberSchema = new mongoose.Schema({
+    nom: {
+        type: String
+    },
+    prenom: {
+        type: String
+    },
     username: {
         type: String,
     },
@@ -11,31 +17,20 @@ const memberSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    nom: {
-        type: String,
-        required: true
-    },
-    prenom: {
-        type: String,
-        required: true
-    },
     email: {
-        type: String,
-        required: true
+        type: String
     },
     addr: {
-        type: String,
-        required: true
+        type: String
     },
     cp: {
         type: Number
     },
     phone: {
-        type: String,
-        required: true
+        type: Number
     },
     sign: {
-        type: String,
+        type: String
     },
     picture: {
         type: String
@@ -44,13 +39,11 @@ const memberSchema = new mongoose.Schema({
         type: String
     },
     namePromo: {
-        type: String,
-        required: true
+        type: String
     },
     presence: {
-        type: Array,
-        required: true
-    }
+        type: Array
+    } 
     
 }, {
     timestamps: true
