@@ -27,7 +27,7 @@ router.delete('/api/deletePromo', promoController.deletePromo)
 // Member
 router.post('/api/addMember', memberController.addMember)
 router.get('/api/getMember', memberController.getMember)
-router.get('/api/getOneMember', memberController.getOneMember)
+router.get('/api/getOneMember/:_id', memberController.getOneMember)
 router.get('/api/getMemberByPromo', memberController.getMemberByPromo)
 router.get('/api/getMemberForConnection', memberController.getMemberForConnection)
 router.put('/api/updateMember', memberController.updateMember)

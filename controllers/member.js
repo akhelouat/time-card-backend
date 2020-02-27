@@ -43,7 +43,7 @@ exports.getMember = (req, res, next) => {
 };
 
 exports.getOneMember = (req, res, next) => {
-    Member.find({ _id: req.body._id })
+    Member.find({ _id: req.params._id })
         .then(Member => res.status(200).send(Member))
         .catch(Member => res.status(400).send({
             Member
