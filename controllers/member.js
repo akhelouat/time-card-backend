@@ -57,6 +57,14 @@ exports.getMemberByPromo = (req, res, next) => {
             Member
         }));
 };
+
+exports.getMemberForConnection = (req, res, next) => {
+    Member.find({ username: req.body.username })
+        .then(Member => res.status(200).send(Member))
+        .catch(Member => res.status(400).send({
+            Member
+        }));
+};
 exports.updateMember = (req, res, next) => {
     if (req.body._id) {
         var msg = [];
@@ -112,7 +120,7 @@ exports.updateMember = (req, res, next) => {
             updater(req.body._id, "poleEmploiNumber", req.body.lastName, msg, err);
         }
     } else {
-        res.status(400).send('problème : il faut préciser l\'id de l\'étudiant ')
+        res.status(400).send('problème : il faut préciser l\'id de l\'étudiant')
 
     }
 };
