@@ -59,7 +59,7 @@ exports.getMemberByPromo = (req, res, next) => {
 };
 
 exports.getMemberForConnection = (req, res, next) => {
-    Member.find({ username: req.body.username })
+    Member.findOne({ username: req.body.username })
         .then(Member => res.status(200).send(Member))
         .catch(Member => res.status(400).send({
             Member
