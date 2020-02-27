@@ -55,8 +55,8 @@ const memberSchema = new mongoose.Schema({
     presence: {
         type: Array,
         default: []
-    } 
-    
+    }
+
 }, {
     timestamps: true
 })
