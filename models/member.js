@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
 const memberSchema = new mongoose.Schema({
     firstName: {
-        type: String
+        type: String,
+        default: ''
     },
     lastName: {
-        type: String
+        type: String,
+        default: ''
     },
     username: {
         type: String,
+        default: ''
     },
     password: {
         type: String,
@@ -18,31 +21,40 @@ const memberSchema = new mongoose.Schema({
         default: false
     },
     mail: {
-        type: String
+        type: String,
+        default: ''
     },
     address: {
-        type: String
+        type: String,
+        default: ''
     },
     addressCP: {
-        type: Number
+        type: Number,
+        default: 0
     },
     mobileNumber: {
-        type: Number
+        type: Number,
+        default: 0
     },
     sign: {
-        type: String
+        type: String,
+        default: ''
     },
     picture: {
-        type: String
+        type: String,
+        default: ''
     },
     poleEmploiNumber: {
-        type: String
+        type: String,
+        default: ''
     },
     namePromo: {
-        type: String
+        type: String,
+        default: ''
     },
     presence: {
-        type: Array
+        type: Array,
+        default: []
     } 
     
 }, {

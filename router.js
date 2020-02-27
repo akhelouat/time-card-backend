@@ -7,7 +7,7 @@ const memberController = require('./controllers/member')
 const promoController = require('./controllers/promo')
 
 // Mongoose connection
-mongoose.connect('mongodb+srv://abdel:3wRrhcbY96MCdRD@cluster0-axmws.gcp.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://time:odcOM1p8IEECJYvS@cluster0-b8zrh.gcp.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
