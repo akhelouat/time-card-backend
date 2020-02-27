@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const memberSchema = new mongoose.Schema({
-    nom: {
+    firstName: {
         type: String
     },
-    prenom: {
+    lastName: {
         type: String
     },
     username: {
@@ -17,16 +17,16 @@ const memberSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    email: {
+    mail: {
         type: String
     },
-    addr: {
+    address: {
         type: String
     },
-    cp: {
+    addressCP: {
         type: Number
     },
-    phone: {
+    mobileNumber: {
         type: Number
     },
     sign: {
@@ -35,7 +35,7 @@ const memberSchema = new mongoose.Schema({
     picture: {
         type: String
     },
-    idPole: {
+    poleEmploiNumber: {
         type: String
     },
     namePromo: {

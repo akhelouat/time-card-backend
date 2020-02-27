@@ -14,21 +14,21 @@ function updater(id, param, body, res, msg, error) {
 
 exports.addMember = (req, res, next) => {
     const member = new Member({
-        nom: req.body.nom,
-        prenom: req.body.prenom,
-        username: req.body.prenom[0] + req.body.nom,
+        lastName: req.body.lastName,
+        firstName: req.body.firstName,
+        username: req.body.firstName[0] + req.body.lastName,
         isAdmin: req.body.isAdmin,
-        promo: req.body.promo,
-        email: req.body.email,
-        addr: req.body.addr,
-        cp: req.body.cp,
-        phone: req.body.phone,
+        namePromo: req.body.namePromo,
+        mail: req.body.mail,
+        address: req.body.address,
+        addressCP: req.body.addressCP,
+        mobileNumber: req.body.mobileNumber,
         sign: req.body.sign,
         picture: req.body.picture,
-        idPole: req.body.idPole 
+        poleEmploiNumber: req.body.poleEmploiNumber 
     });
     member.save()
-        .then(() => res.status(201).send(req.body.prenom + " " + req.body.nom + " a été rajouté à la base de données"))
+        .then(() => res.status(201).send(req.body.firstName + " " + req.body.lastName + " a été rajouté à la base de données"))
         .catch(error => res.status(400).send({ error }));
 
 };
@@ -50,35 +50,35 @@ exports.updateMember = (req, res, next) => {
         err.push('error password');
         updater(req.body._id, 'password', req.body.password, res, msg);
     }
-    if (req.body.nom && typeof req.body.nom === String) {
-        msg.push('success nom');
-        err.push('error nom');
-        updater(req.body._id, 'nom', req.body.nom, res);
+    if (req.body.lastName && typeof req.body.lastName === String) {
+        msg.push('success lastName');
+        err.push('error lastName');
+        updater(req.body._id, 'lastName', req.body.lastName, res);
     }
-    if (req.body.prenom && typeof req.body.prenom === String) {
-        msg.push('success prenom');
-        err.push('error prenom');
-        updater(req.body._id, 'prenom',req.body.prenom, res, msg);
+    if (req.body.lastName && typeof req.body.firstName === String) {
+        msg.push('success firstName');
+        err.push('error firstName');
+        updater(req.body._id, 'firstName',req.body.firstName, res, msg);
     }
-    if (req.body.email && typeof req.body.email === String) {
-        msg.push('success email');
-        err.push('error email');
-        updater(req.body._id, 'email',req.body.email, msg, err);
+    if (req.body.mail && typeof req.body.mail === String) {
+        msg.push('success mail');
+        err.push('error mail');
+        updater(req.body._id, 'mail',req.body.mail, msg, err);
     }
-    if (req.body.addr && typeof req.body.addr === String) {
-        msg.push('success addr');
-        err.push('error addr');
-        updater(req.body._id, "addr", req.body.addr, msg, err);
+    if (req.body.address && typeof req.body.address === String) {
+        msg.push('success address');
+        err.push('error address');
+        updater(req.body._id, "address", req.body.address, msg, err);
     }
-    if (req.body.cp && typeof req.body.cp === Number) {
-        msg.push('success cp');
-        err.push('error cp');
-        updater(req.body._id, "cp", req.body.cp, msg, err);
+    if (req.body.addressCP && typeof req.body.addressCP === Number) {
+        msg.push('success addressCP');
+        err.push('error addressCP');
+        updater(req.body._id, "addressCP", req.body.addressCP, msg, err);
     }
-    if (req.body.phone && typeof req.body.phone === Number) {
-        msg.push('success phone');
-        err.push('error phone');
-        updater(req.body._id, "phone", req.body.phone, msg, err);
+    if (req.body.mobileNumber && typeof req.body.mobileNumber === Number) {
+        msg.push('success mobileNumber');
+        err.push('error mobileNumber');
+        updater(req.body._id, "mobileNumber", req.body.mobileNumber, msg, err);
     }
     if (req.body.sign && typeof req.body.sign === String) {
         msg.push('success sign');
@@ -90,10 +90,10 @@ exports.updateMember = (req, res, next) => {
         err.push('error picture');
         updater(req.body._id, "picture", req.body.picture, msg, err);
     }
-    if (req.body.idPole && typeof req.body.idPole === String) {
-        msg.push('success idPole');
-        err.push('error idPole');
-        updater(req.body._id, "idPole", req.body.nom, msg, err);
+    if (req.body.poleEmploiNumber && typeof req.body.poleEmploiNumber === String) {
+        msg.push('success poleEmploiNumber');
+        err.push('error poleEmploiNumber');
+        updater(req.body._id, "poleEmploiNumber", req.body.lastName, msg, err);
     }
     } 
     else {
