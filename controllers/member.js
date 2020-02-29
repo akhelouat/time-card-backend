@@ -14,11 +14,14 @@ function updater(id, param, body, res, msg, error) {
 
 }
 
+const defaultPassword = '1234';
+
 exports.addMember = (req, res, next) => {
     const member = new Member({
         lastName: req.body.lastName,
         firstName: req.body.firstName,
         username: req.body.firstName[0] + req.body.lastName,
+        password: bcrypt.hashSync(defaultPassword, 5),
         isAdmin: req.body.isAdmin,
         namePromo: req.body.namePromo,
         mail: req.body.mail,
