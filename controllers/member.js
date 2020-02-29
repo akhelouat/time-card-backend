@@ -1,7 +1,8 @@
 const Member = require('../models/member')
+const bcrypt = require('bcrypt')
 
 function updater(id, param, body, res, msg, error) {
-    Myinfo.updateMany({
+    Member.updateMany({
             _id: id
         }, {
             $set: {
@@ -58,13 +59,26 @@ exports.getMemberByPromo = (req, res, next) => {
         }));
 };
 
-exports.getMemberForConnection = (req, res, next) => {
+exports.login = (req, res, next) => {
     Member.findOne({ username: req.body.username })
-        .then(Member => res.status(200).send(Member))
-        .catch(Member => res.status(400).send({
-            Member
-        }));
+    .then(Member => {
+      if (!Member) {
+        return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+      }
+      bcrypt.compare(req.body.password, Member.password)
+        .then(valid => {
+          if (!valid) {
+            return res.status(401).json({ error: 'Mot de passe incorrect !' });
+          }
+          
+          res.status(200).send(Member);
+        })
+        .catch(error => res.status(500).json({ error: "2" }));
+    })
+    .catch(error => res.status(500).json({ error: '1' }));
 };
+
+
 exports.updateMember = (req, res, next) => {
     if (req.body._id) {
         var msg = [];
