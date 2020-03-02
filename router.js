@@ -29,7 +29,7 @@ router.post('/api/addMember', memberController.addMember)
 router.get('/api/getMember', memberController.getMember)
 router.get('/api/getOneMember/:_id', memberController.getOneMember)
 router.get('/api/getMemberByPromo', memberController.getMemberByPromo)
-router.get('/api/getMemberForConnection', memberController.getMemberForConnection)
+router.post('/api/login', memberController.login)
 router.put('/api/updateMember', memberController.updateMember)
 router.delete('/api/deleteMember', memberController.deleteMember)
 

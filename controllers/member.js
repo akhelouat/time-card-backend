@@ -1,23 +1,27 @@
 const Member = require('../models/member')
+const bcrypt = require('bcrypt')
 
-function updater(id, param, body, res, msg, error) {
-    Myinfo.updateMany({
+/*
+function updater(id, param, body, res, msg, err) {
+    Member.updateOne({
             _id: id
         }, {
             $set: {
                 [param]: body
             }
         })
-        .then(() => res.status(200).send(msg))
-        .catch(() => res.status(400).send(error));
+        
 
-}
+}; */
+
+const defaultPassword = '1234';
 
 exports.addMember = (req, res, next) => {
     const member = new Member({
         lastName: req.body.lastName,
         firstName: req.body.firstName,
         username: req.body.firstName[0] + req.body.lastName,
+        password: bcrypt.hashSync(defaultPassword, 5),
         isAdmin: req.body.isAdmin,
         namePromo: req.body.namePromo,
         mail: req.body.mail,
@@ -58,72 +62,91 @@ exports.login = (req, res, next) => {
         }));
 };
 
-exports.getMemberForConnection = (req, res, next) => {
+exports.login = (req, res, next) => {
     Member.findOne({ username: req.body.username })
-        .then(Member => res.status(200).send(Member))
-        .catch(Member => res.status(400).send({
-            Member
-        }));
+    .then(Member => {
+      if (!Member) {
+        return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+      }
+      bcrypt.compare(req.body.password, Member.password)
+        .then(valid => {
+          if (!valid) {
+            return res.status(401).json({ error: 'Mot de passe incorrect !' });
+          }
+          
+          res.status(200).send(Member);
+        })
+        .catch(error => res.status(500).json({ error: "2" }));
+    })
+    .catch(error => res.status(500).json({ error: '1' }));
 };
+
+
 exports.updateMember = (req, res, next) => {
     if (req.body._id) {
-        var msg = [];
-        var err = [];
-        if (req.body.password && typeof req.body.password === String) {
-            msg.push('success password');
-            err.push('error password');
-            updater(req.body._id, 'password', req.body.password, res, msg);
+        if(req.body.username) {
+         Member.updateMany({_id : req.body._id }, { $set: { username: req.body.username } })
+         .then(() => res.status(200).send('le username a bien été changé en ' + req.body.username + ' || '))
+         .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-        if (req.body.lastName && typeof req.body.lastName === String) {
-            msg.push('success lastName');
-            err.push('error lastName');
-            updater(req.body._id, 'lastName', req.body.lastName, res);
+        if(req.body.password) {
+         Member.updateMany({_id : req.body._id }, { $set: { password: req.body.password } })
+         .then(() => res.status(200).send('le mot de pass a bien été changé  || '))
+         .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-        if (req.body.lastName && typeof req.body.firstName === String) {
-            msg.push('success firstName');
-            err.push('error firstName');
-            updater(req.body._id, 'firstName', req.body.firstName, res, msg);
+        if(req.body.isAdmin) {
+         Member.updateMany({_id : req.body._id }, { $set: { isAdmin: req.body.isAdmin } })
+         .then(() => res.status(200).send('le status administrateur a bien été changé en ' + req.body.isAdmin + ' || '))
+         .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-        if (req.body.mail && typeof req.body.mail === String) {
-            msg.push('success mail');
-            err.push('error mail');
-            updater(req.body._id, 'mail', req.body.mail, msg, err);
+        if(req.body.firstName) {
+            Member.updateMany({_id : req.body._id }, { $set: { firstName: req.body.firstName } })
+            .then(() => res.status(200).send('le nom a bien été changé en ' + req.body.firstName + ' || '))
+            .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-        if (req.body.address && typeof req.body.address === String) {
-            msg.push('success address');
-            err.push('error address');
-            updater(req.body._id, "address", req.body.address, msg, err);
+        if(req.body.lastName) {
+            Member.updateMany({_id : req.body._id }, { $set: { lastName: req.body.lastName } })
+            .then(() => res.status(200).send('le nom a bien été changé en ' + req.body.lastName + ' || '))
+            .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-        if (req.body.addressCP && typeof req.body.addressCP === Number) {
-            msg.push('success addressCP');
-            err.push('error addressCP');
-            updater(req.body._id, "addressCP", req.body.addressCP, msg, err);
+        if(req.body.mail) {
+            Member.updateMany({_id : req.body._id }, { $set: { mail: req.body.mail } })
+            .then(() => res.status(200).send('l\'email a bien été changé en ' + req.body.mail + ' || '))
+            .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-        if (req.body.mobileNumber && typeof req.body.mobileNumber === Number) {
-            msg.push('success mobileNumber');
-            err.push('error mobileNumber');
-            updater(req.body._id, "mobileNumber", req.body.mobileNumber, msg, err);
+        if(req.body.address) {
+            Member.updateMany({_id : req.body._id }, { $set: { address: req.body.address } })
+            .then(() => res.status(200).send('l\'adresse a bien été changé en ' + req.body.address + ' || '))
+            .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-        if (req.body.sign && typeof req.body.sign === String) {
-            msg.push('success sign');
-            err.push('error sign');
-            updater(req.body._id, "sign", req.body.sign, msg, err);
+        if(req.body.addressCP) {
+            Member.updateMany({_id : req.body._id }, { $set: { addressCP: req.body.addressCP } })
+            .then(() => res.status(200).send('l\'adresse postale a bien été changée en ' + req.body.addressCP + ' || '))
+            .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-        if (req.body.picture && typeof req.body.picture === String) {
-            msg.push('success picture');
-            err.push('error picture');
-            updater(req.body._id, "picture", req.body.picture, msg, err);
+        if(req.body.mobileNumber) {
+            Member.updateMany({_id : req.body._id }, { $set: { mobileNumber: req.body.mobileNumber } })
+            .then(() => res.status(200).send('le numéro de téléphone a bien été changé en ' + req.body.mobileNumber + ' || '))
+            .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-        if (req.body.poleEmploiNumber && typeof req.body.poleEmploiNumber === String) {
-            msg.push('success poleEmploiNumber');
-            err.push('error poleEmploiNumber');
-            updater(req.body._id, "poleEmploiNumber", req.body.lastName, msg, err);
+        if(req.body.picture) {
+            Member.updateMany({_id : req.body._id }, { $set: { picture: req.body.picture } })
+            .then(() => res.status(200).send('la photo a bien été changée en ' + req.body.addr + ' || '))
+            .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-    } else {
-        res.status(400).send('problème : il faut préciser l\'id de l\'étudiant')
-
+        if(req.body.poleEmploiNumber) {
+            Member.updateMany({_id : req.body._id }, { $set: { poleEmploiNumber: req.body.poleEmploiNumber } })
+            .then(() => res.status(200).send('le numéro pole emploi a bien été changé en ' + req.body.poleEmploiNumber + ' || '))
+            .catch(() => res.status(400).send('problème : aucune modifications de faite'));
+        }
     }
-};
+     else
+        {
+         res.status(400).send('problème : il faut préciser l\'id de l\'étudiant ')
+ 
+        }
+     };
+ 
 
 exports.deleteMember = (req, res, next) => {
     if (req.body._id) {
