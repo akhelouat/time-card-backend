@@ -50,8 +50,8 @@ exports.getOneMember = (req, res, next) => {
         }));
 };
 
-exports.getMemberByPromo = (req, res, next) => {
-    Member.find({ namePromo: req.body.promo })
+exports.login = (req, res, next) => {
+    Member.find({ namePromo: req.body.Promo })
         .then(Member => res.status(200).send(Member))
         .catch(Member => res.status(400).send({
             Member

@@ -53,8 +53,8 @@ const memberSchema = new mongoose.Schema({
         default: ''
     },
     presence: {
-        type: Object,
-        default: {}
+        type: Array,
+        default: []
     }
 
 }, {
