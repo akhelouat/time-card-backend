@@ -147,6 +147,11 @@ exports.updateMember = (req, res, next) => {
                 .then(() => res.status(200).send('la presence a ete changer ' + req.body.isSigned + ' || '))
                 .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
+        if (req.body.presence) {
+            Member.updateMany({ _id: req.body._id }, { $set: { presence: req.body.presence } })
+                .then(() => res.status(200).send('Your daily checkin is done'))
+                .catch(() => res.status(400).send('error: please retry'));
+        }
     } else {
         res.status(400).send('problème : il faut préciser l\'id de l\'étudiant ')
 
