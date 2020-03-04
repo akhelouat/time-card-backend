@@ -6,15 +6,12 @@ const server = http.createServer(router)
 const cron = require('node-cron')
 const axios = require('axios')
 
-
 cron.schedule('0 7 * * *', () => {
-  axios.put('/api/setUnsigned')
-  .then( () => {
-    console.log("le cron s'est bien lancé")
-  })
-  .catch( () => {
-    console.log("erreur, le cron n'a pas fonctionné")
-  })
+  axios.post('http://localhost:3000/api/setUnsigned').then(() => {
+    console.log('ça fonctionne');
+  }).catch(() => {
+    console.log('ça ne fonctionne pas')
+  });
 }, {
   scheduled: true,
   timezone: "Europe/Paris"
