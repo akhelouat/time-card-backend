@@ -7,8 +7,14 @@ const cron = require('node-cron')
 const axios = require('axios')
 
 
-cron.schedule('0 1 * * *', () => {
-  console.log('fonction axios qui va se lancer automatiquement chaque matin')
+cron.schedule('0 7 * * *', () => {
+  axios.put('/api/setUnsigned')
+  .then( () => {
+    console.log("le cron s'est bien lancé")
+  })
+  .catch( () => {
+    console.log("erreur, le cron n'a pas fonctionné")
+  })
 }, {
   scheduled: true,
   timezone: "Europe/Paris"

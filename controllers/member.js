@@ -168,7 +168,7 @@ exports.deleteMember = (req, res, next) => {
 
 
 exports.setUnsigned = (req, res, next) => {
-    Member.updateMany({ $set: { isSigned: true } })
+    Member.updateMany({ $set: { isSigned: false } })
     .then(() => res.status(200).send('l\'adresse a bien été changé en ' + req.body.address + ' || '))
     .catch(() => res.status(400).send('problème : aucune modifications de faite'));
 }
