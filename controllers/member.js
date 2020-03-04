@@ -140,6 +140,11 @@ exports.updateMember = (req, res, next) => {
                 .then(() => res.status(200).send('le numéro pole emploi a bien été changé en ' + req.body.poleEmploiNumber + ' || '))
                 .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
+        if (req.body.isSigned) {
+            Member.updateMany({ _id: req.body._id }, { $set: { isSigned: req.body.isSigned } })
+                .then(() => res.status(200).send('la presence a ete changer ' + req.body.isSigned + ' || '))
+                .catch(() => res.status(400).send('problème : aucune modifications de faite'));
+        }
     } else {
         res.status(400).send('problème : il faut préciser l\'id de l\'étudiant ')
 
