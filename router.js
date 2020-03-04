@@ -31,6 +31,7 @@ router.get('/api/getOneMember/:_id', memberController.getOneMember)
 router.get('/api/getMemberByPromo/:promo', memberController.getMemberByPromo)
 router.post('/api/login', memberController.login)
 router.put('/api/updateMember', memberController.updateMember)
+router.put('/api/setUnsigned', memberController.setUnsigned)
 router.delete('/api/deleteMember', memberController.deleteMember)
 
 module.exports = router

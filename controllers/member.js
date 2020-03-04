@@ -14,6 +14,8 @@ function updater(id, param, body, res, msg, err) {
 
 }; */
 
+
+
 const defaultPassword = '1234';
 
 exports.addMember = (req, res, next) => {
@@ -163,3 +165,10 @@ exports.deleteMember = (req, res, next) => {
         res.status(400).send('problème : il faut préciser l\'id de l\'étudiant ')
     }
 };
+
+
+exports.setUnsigned = (req, res, next) => {
+    Member.updateMany({ $set: { isSigned: true } })
+    .then(() => res.status(200).send('l\'adresse a bien été changé en ' + req.body.address + ' || '))
+    .catch(() => res.status(400).send('problème : aucune modifications de faite'));
+}
