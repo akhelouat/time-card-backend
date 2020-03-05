@@ -92,11 +92,6 @@ exports.updateMember = (req, res, next) => {
                 .then(() => res.status(200).send('le username a bien été changé en ' + req.body.username + ' || '))
                 .catch(() => res.status(400).send('problème : aucune modifications de faite'));
         }
-        if (req.body.password) {
-            Member.updateMany({ _id: req.body._id }, { $set: { password: req.body.password } })
-                .then(() => res.status(200).send('le mot de pass a bien été changé  || '))
-                .catch(() => res.status(400).send('problème : aucune modifications de faite'));
-        }
         if (req.body.isAdmin) {
             Member.updateMany({ _id: req.body._id }, { $set: { isAdmin: req.body.isAdmin } })
                 .then(() => res.status(200).send('le status administrateur a bien été changé en ' + req.body.isAdmin + ' || '))
@@ -176,3 +171,9 @@ exports.setUnsigned = (req, res, next) => {
     .then(() => res.status(200).send('l\'adresse a bien été changé en ' + req.body.address + ' || '))
     .catch(() => res.status(400).send('problème : aucune modifications de faite'));
 };
+
+exports.changePassword = (req, res, next) => {
+        Member.updateMany({ _id: req.body._id }, { $set: { password:  bcrypt.hashSync(req.body.newPassword, 5) } })
+            .then(() => res.status(201).send('the password has been changed'))
+            .catch((error) => res.status(400).send(error));
+}

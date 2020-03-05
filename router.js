@@ -33,5 +33,6 @@ router.post('/api/login', memberController.login)
 router.put('/api/updateMember', memberController.updateMember)
 router.post('/api/setUnsigned', memberController.setUnsigned)
 router.delete('/api/deleteMember', memberController.deleteMember)
+router.put('/api/changePassword', memberController.changePassword)
 
 module.exports = router
