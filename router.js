@@ -5,9 +5,9 @@ const mongoose = require('mongoose')
 router.use(bodyParser.json())
 const memberController = require('./controllers/member')
 const promoController = require('./controllers/promo')
-
+require('dotenv').config();
 // Mongoose connection
-mongoose.connect('mongodb+srv://time:odcOM1p8IEECJYvS@cluster0-b8zrh.gcp.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect(process.env.DB_IDENTIFERS, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
